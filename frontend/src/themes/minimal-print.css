@@ -1,0 +1,68 @@
+/* Minimal Print CSS */
+@media print {
+  @page {
+    margin: 1in;
+    size: letter;
+  }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: white;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .resume-minimal {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    max-width: 100%;
+    padding: 0;
+    background: white;
+    color: #111;
+    font-size: 10pt;
+    line-height: 1.5;
+  }
+
+  .resume-minimal .resume-header {
+    margin-bottom: 28pt;
+  }
+
+  .resume-minimal .resume-name {
+    font-size: 24pt;
+    font-weight: 300;
+    letter-spacing: 3pt;
+  }
+
+  .resume-minimal .resume-title {
+    font-size: 9pt;
+    letter-spacing: 1.5pt;
+  }
+
+  .resume-minimal .contact-info {
+    font-size: 9pt;
+  }
+
+  .resume-minimal .section-title {
+    font-size: 8pt;
+    letter-spacing: 2.5pt;
+  }
+
+  .resume-minimal .section {
+    margin-bottom: 24pt;
+  }
+
+  .resume-minimal .bullets li {
+    font-size: 9pt;
+  }
+
+  .resume-minimal .summary-text {
+    font-size: 9pt;
+    line-height: 1.7;
+  }
+
+  .resume-minimal .section-divider {
+    border-top-color: #ddd !important;
+  }
+}

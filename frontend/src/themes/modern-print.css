@@ -1,0 +1,77 @@
+/* Modern Print CSS */
+@media print {
+  @page {
+    margin: 0.5in;
+    size: letter;
+  }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: white;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .resume-modern {
+    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    max-width: 100%;
+    display: flex;
+    background: white;
+    font-size: 10pt;
+  }
+
+  .resume-modern .sidebar {
+    width: 30%;
+    background: #2C3E50 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    color: white !important;
+    padding: 20pt 14pt;
+  }
+
+  .resume-modern .sidebar-name {
+    font-size: 16pt;
+    color: white !important;
+  }
+
+  .resume-modern .sidebar-title {
+    font-size: 9pt;
+    color: #BDC3C7 !important;
+  }
+
+  .resume-modern .sidebar-section-title {
+    font-size: 8pt;
+    color: #7F8C8D !important;
+    border-bottom-color: #3D5166 !important;
+  }
+
+  .resume-modern .contact-value {
+    font-size: 9pt;
+    color: #BDC3C7 !important;
+  }
+
+  .resume-modern .sidebar .skill-tag {
+    background: #3D5166 !important;
+    color: #ECF0F1 !important;
+  }
+
+  .resume-modern .main-content {
+    padding: 20pt 20pt;
+  }
+
+  .resume-modern .section-title {
+    font-size: 10pt;
+    border-bottom-color: #2C3E50 !important;
+  }
+
+  .resume-modern .bullets li {
+    font-size: 9pt;
+  }
+
+  .resume-modern .summary-text {
+    font-size: 9pt;
+  }
+}

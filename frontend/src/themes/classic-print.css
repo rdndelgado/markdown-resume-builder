@@ -1,0 +1,83 @@
+/* Classic Print CSS */
+@media print {
+  @page {
+    margin: 0.75in;
+    size: letter;
+  }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: white;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .resume-classic {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    max-width: 100%;
+    padding: 0;
+    color: #000;
+    background: white;
+    font-size: 11pt;
+    line-height: 1.4;
+  }
+
+  .resume-classic .resume-header {
+    text-align: center;
+    border-bottom: 2px solid #000;
+    padding-bottom: 12pt;
+    margin-bottom: 16pt;
+  }
+
+  .resume-classic .resume-name {
+    font-size: 22pt;
+    font-weight: bold;
+    margin: 0 0 4pt 0;
+    letter-spacing: 1pt;
+    text-transform: uppercase;
+  }
+
+  .resume-classic .resume-title {
+    font-size: 11pt;
+    color: #444;
+    margin: 0 0 8pt 0;
+  }
+
+  .resume-classic .contact-info {
+    font-size: 10pt;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 4pt 12pt;
+  }
+
+  .resume-classic .section {
+    margin-bottom: 14pt;
+  }
+
+  .resume-classic .section-title {
+    font-size: 11pt;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1pt;
+    border-bottom: 1pt solid #000;
+    padding-bottom: 2pt;
+    margin-bottom: 8pt;
+  }
+
+  .resume-classic .experience-entry {
+    margin-bottom: 10pt;
+  }
+
+  .resume-classic .bullets li {
+    font-size: 10pt;
+    margin-bottom: 2pt;
+  }
+
+  .resume-classic .summary-text {
+    font-size: 10pt;
+  }
+}

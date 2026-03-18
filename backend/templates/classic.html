@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{ personal.name or 'Resume' }}</title>
+  <style>
+    @page { margin: 0.75in; size: letter; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: white; }
+    .resume {
+      font-family: Georgia, 'Times New Roman', Times, serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 40px;
+      color: #000;
+      background: white;
+      font-size: 13px;
+      line-height: 1.4;
+    }
+    .resume-header {
+      text-align: center;
+      border-bottom: 2px solid #000;
+      padding-bottom: 14px;
+      margin-bottom: 20px;
+    }
+    h1 {
+      font-size: 26px;
+      font-weight: bold;
+      margin: 0 0 4px 0;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .title { font-size: 13px; color: #444; margin: 0 0 10px 0; font-style: italic; }
+    .contact-info {
+      font-size: 12px; color: #333;
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 14px;
+    }
+    .section { margin-bottom: 18px; }
+    .section-title {
+      font-size: 13px; font-weight: bold; text-transform: uppercase;
+      letter-spacing: 1.5px; border-bottom: 1px solid #000;
+      padding-bottom: 3px; margin-bottom: 10px;
+    }
+    .experience-entry { margin-bottom: 14px; }
+    .exp-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
+    .exp-left { flex: 1; }
+    .exp-role { font-weight: bold; font-size: 13px; }
+    .exp-company { font-size: 12px; color: #333; }
+    .exp-dates { font-size: 12px; color: #555; white-space: nowrap; flex-shrink: 0; }
+    ul.bullets { margin: 5px 0 0 18px; padding: 0; }
+    ul.bullets li { font-size: 12px; margin-bottom: 3px; line-height: 1.4; }
+    .education-entry { margin-bottom: 10px; }
+    .edu-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
+    .edu-left { flex: 1; }
+    .edu-degree { font-weight: bold; font-size: 13px; }
+    .edu-institution { font-size: 12px; color: #333; }
+    .edu-dates { font-size: 12px; color: #555; white-space: nowrap; flex-shrink: 0; }
+    .skills-grid { display: flex; gap: 20px; flex-wrap: wrap; }
+    .skill-group { flex: 1; min-width: 180px; }
+    .skill-group-label { font-weight: bold; font-size: 12px; margin-bottom: 5px; }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 4px; }
+    .skill-tag { font-size: 11px; background: #f5f5f5; border: 1px solid #ccc; padding: 2px 7px; border-radius: 2px; }
+    .cert-entry { margin-bottom: 6px; font-size: 12px; }
+    .cert-name { font-weight: bold; }
+    .summary-text { font-size: 12px; line-height: 1.6; color: #222; }
+  </style>
+</head>
+<body>
+<div class="resume">
+  <div class="resume-header">
+    <h1>{{ personal.name or 'Your Name' }}</h1>
+    {% if personal.title %}<p class="title">{{ personal.title }}</p>{% endif %}
+    <div class="contact-info">
+      {% if personal.email %}<span>{{ personal.email }}</span>{% endif %}
+      {% if personal.phone %}<span>{{ personal.phone }}</span>{% endif %}
+      {% if personal.location %}<span>{{ personal.location }}</span>{% endif %}
+      {% if personal.linkedin %}<span>{{ personal.linkedin }}</span>{% endif %}
+      {% if personal.website %}<span>{{ personal.website }}</span>{% endif %}
+    </div>
+  </div>
+
+  {% if personal.summary %}
+  <div class="section">
+    <div class="section-title">Summary</div>
+    <p class="summary-text">{{ personal.summary }}</p>
+  </div>
+  {% endif %}
+
+  {% if experience %}
+  <div class="section">
+    <div class="section-title">Experience</div>
+    {% for exp in experience %}
+    <div class="experience-entry">
+      <div class="exp-header">
+        <div class="exp-left">
+          <div class="exp-role">{{ exp.role }}</div>
+          <div class="exp-company">{{ exp.company }}</div>
+        </div>
+        <div class="exp-dates">
+          {{ exp.start_date }}{% if exp.start_date %} – {% endif %}{% if exp.current %}Present{% else %}{{ exp.end_date }}{% endif %}
+        </div>
+      </div>
+      {% set valid_bullets = exp.bullets | selectattr | list %}
+      {% if valid_bullets %}
+      <ul class="bullets">
+        {% for bullet in exp.bullets %}{% if bullet.strip() %}<li>{{ bullet }}</li>{% endif %}{% endfor %}
+      </ul>
+      {% endif %}
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  {% if education %}
+  <div class="section">
+    <div class="section-title">Education</div>
+    {% for edu in education %}
+    <div class="education-entry">
+      <div class="edu-header">
+        <div class="edu-left">
+          <div class="edu-degree">{{ edu.degree }}{% if edu.field %} in {{ edu.field }}{% endif %}</div>
+          <div class="edu-institution">{{ edu.institution }}</div>
+        </div>
+        <div class="edu-dates">{{ edu.start_date }}{% if edu.start_date and edu.end_date %} – {% endif %}{{ edu.end_date }}</div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  {% if skills.technical or skills.soft %}
+  <div class="section">
+    <div class="section-title">Skills</div>
+    <div class="skills-grid">
+      {% if skills.technical %}
+      <div class="skill-group">
+        <div class="skill-group-label">Technical</div>
+        <div class="skill-tags">
+          {% for skill in skills.technical %}{% if skill.strip() %}<span class="skill-tag">{{ skill }}</span>{% endif %}{% endfor %}
+        </div>
+      </div>
+      {% endif %}
+      {% if skills.soft %}
+      <div class="skill-group">
+        <div class="skill-group-label">Soft Skills</div>
+        <div class="skill-tags">
+          {% for skill in skills.soft %}{% if skill.strip() %}<span class="skill-tag">{{ skill }}</span>{% endif %}{% endfor %}
+        </div>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+  {% endif %}
+
+  {% if certifications %}
+  <div class="section">
+    <div class="section-title">Certifications</div>
+    {% for cert in certifications %}{% if cert.name.strip() %}
+    <div class="cert-entry">
+      <span class="cert-name">{{ cert.name }}</span>{% if cert.issuer %} — {{ cert.issuer }}{% endif %}{% if cert.year %} ({{ cert.year }}){% endif %}
+    </div>
+    {% endif %}{% endfor %}
+  </div>
+  {% endif %}
+</div>
+</body>
+</html>

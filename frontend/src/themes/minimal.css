@@ -1,0 +1,195 @@
+/* Minimal Theme — Ultra-clean, lots of whitespace */
+.resume-minimal {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  max-width: 100%;
+  padding: 40px 48px;
+  background: white;
+  color: #111;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.resume-minimal .resume-header {
+  margin-bottom: 36px;
+}
+
+.resume-minimal .resume-name {
+  font-size: 30px;
+  font-weight: 300;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin: 0 0 6px 0;
+  color: #111;
+}
+
+.resume-minimal .resume-title {
+  font-size: 12px;
+  color: #888;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin: 0 0 14px 0;
+  font-weight: 400;
+}
+
+.resume-minimal .contact-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+  font-size: 12px;
+  color: #666;
+}
+
+.resume-minimal .section {
+  margin-bottom: 32px;
+}
+
+.resume-minimal .section-title {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: #bbb;
+  margin-bottom: 12px;
+  font-weight: 400;
+}
+
+.resume-minimal .section-divider {
+  border: none;
+  border-top: 1px solid #ebebeb;
+  margin-bottom: 14px;
+}
+
+.resume-minimal .experience-entry {
+  margin-bottom: 20px;
+}
+
+.resume-minimal .exp-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 3px;
+  gap: 8px;
+}
+
+.resume-minimal .exp-left { flex: 1; }
+
+.resume-minimal .exp-role {
+  font-weight: 500;
+  font-size: 13px;
+  color: #111;
+}
+
+.resume-minimal .exp-company {
+  font-size: 12px;
+  color: #555;
+}
+
+.resume-minimal .exp-dates {
+  font-size: 11px;
+  color: #bbb;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.resume-minimal .bullets {
+  margin: 8px 0 0 14px;
+  padding: 0;
+}
+
+.resume-minimal .bullets li {
+  font-size: 12px;
+  margin-bottom: 4px;
+  line-height: 1.6;
+  color: #333;
+}
+
+.resume-minimal .education-entry {
+  margin-bottom: 14px;
+}
+
+.resume-minimal .edu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.resume-minimal .edu-left { flex: 1; }
+
+.resume-minimal .edu-degree {
+  font-weight: 500;
+  font-size: 13px;
+  color: #111;
+}
+
+.resume-minimal .edu-institution {
+  font-size: 12px;
+  color: #555;
+}
+
+.resume-minimal .edu-dates {
+  font-size: 11px;
+  color: #bbb;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.resume-minimal .skill-group {
+  margin-bottom: 10px;
+}
+
+.resume-minimal .skill-group-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #bbb;
+  margin-bottom: 6px;
+  font-weight: 400;
+}
+
+.resume-minimal .skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.resume-minimal .skill-tag {
+  font-size: 12px;
+  color: #444;
+}
+
+.resume-minimal .skill-tag::after {
+  content: "·";
+  margin-left: 8px;
+  color: #ddd;
+}
+
+.resume-minimal .skill-tag:last-child::after {
+  content: "";
+}
+
+.resume-minimal .cert-entry {
+  margin-bottom: 8px;
+  font-size: 12px;
+  color: #333;
+}
+
+.resume-minimal .cert-name {
+  font-weight: 500;
+}
+
+.resume-minimal .cert-meta {
+  font-size: 11px;
+  color: #888;
+}
+
+.resume-minimal .summary-text {
+  font-size: 12px;
+  line-height: 1.8;
+  color: #444;
+}
+
+.resume-minimal .empty-state {
+  color: #ccc;
+  font-style: italic;
+  font-size: 12px;
+}

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{ personal.name or 'Resume' }}</title>
+  <style>
+    @page { margin: 0.5in; size: letter; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: white; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .resume {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      display: flex;
+      background: white;
+      min-height: 1056px;
+      font-size: 13px;
+    }
+    .sidebar {
+      width: 32%;
+      background: #2C3E50;
+      color: white;
+      padding: 32px 20px;
+      flex-shrink: 0;
+    }
+    .main-content {
+      flex: 1;
+      padding: 32px 24px;
+      overflow: hidden;
+    }
+    .sidebar-name { font-size: 20px; font-weight: 700; color: white; margin-bottom: 4px; line-height: 1.2; word-break: break-word; }
+    .sidebar-title { font-size: 12px; color: #BDC3C7; margin-bottom: 22px; }
+    .sidebar-section { margin-bottom: 22px; }
+    .sidebar-section-title {
+      font-size: 10px; text-transform: uppercase; letter-spacing: 2px;
+      color: #7F8C8D; border-bottom: 1px solid #3D5166;
+      padding-bottom: 5px; margin-bottom: 10px; font-weight: 600;
+    }
+    .contact-item { margin-bottom: 8px; }
+    .contact-label { font-size: 9px; color: #7F8C8D; display: block; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 1px; }
+    .contact-value { font-size: 11px; color: #BDC3C7; word-break: break-all; }
+    .skill-tag { display: inline-block; font-size: 10px; background: #3D5166; color: #ECF0F1; padding: 3px 7px; border-radius: 3px; margin: 2px 2px 2px 0; }
+    .cert-entry { margin-bottom: 8px; }
+    .cert-name { color: #ECF0F1; font-size: 11px; font-weight: 600; display: block; }
+    .cert-meta { font-size: 10px; color: #7F8C8D; }
+    .section { margin-bottom: 20px; }
+    .section-title {
+      font-size: 12px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 1.5px; color: #2C3E50; border-bottom: 2px solid #2C3E50;
+      padding-bottom: 4px; margin-bottom: 12px;
+    }
+    .experience-entry { margin-bottom: 14px; }
+    .exp-role { font-weight: 700; font-size: 13px; color: #2C3E50; }
+    .exp-company { font-size: 12px; color: #555; }
+    .exp-dates { font-size: 11px; color: #888; margin-bottom: 5px; }
+    ul.bullets { margin: 5px 0 0 16px; padding: 0; }
+    ul.bullets li { font-size: 12px; margin-bottom: 3px; line-height: 1.5; color: #333; }
+    .education-entry { margin-bottom: 10px; }
+    .edu-degree { font-weight: 700; font-size: 13px; color: #2C3E50; }
+    .edu-institution { font-size: 12px; color: #555; }
+    .edu-dates { font-size: 11px; color: #888; }
+    .summary-text { font-size: 12px; line-height: 1.6; color: #444; }
+  </style>
+</head>
+<body>
+<div class="resume">
+  <div class="sidebar">
+    <div class="sidebar-name">{{ personal.name or 'Your Name' }}</div>
+    {% if personal.title %}<div class="sidebar-title">{{ personal.title }}</div>{% endif %}
+
+    {% if personal.email or personal.phone or personal.location or personal.linkedin or personal.website %}
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">Contact</div>
+      {% if personal.email %}
+      <div class="contact-item">
+        <span class="contact-label">Email</span>
+        <span class="contact-value">{{ personal.email }}</span>
+      </div>
+      {% endif %}
+      {% if personal.phone %}
+      <div class="contact-item">
+        <span class="contact-label">Phone</span>
+        <span class="contact-value">{{ personal.phone }}</span>
+      </div>
+      {% endif %}
+      {% if personal.location %}
+      <div class="contact-item">
+        <span class="contact-label">Location</span>
+        <span class="contact-value">{{ personal.location }}</span>
+      </div>
+      {% endif %}
+      {% if personal.linkedin %}
+      <div class="contact-item">
+        <span class="contact-label">LinkedIn</span>
+        <span class="contact-value">{{ personal.linkedin }}</span>
+      </div>
+      {% endif %}
+      {% if personal.website %}
+      <div class="contact-item">
+        <span class="contact-label">Website</span>
+        <span class="contact-value">{{ personal.website }}</span>
+      </div>
+      {% endif %}
+    </div>
+    {% endif %}
+
+    {% if skills.technical %}
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">Technical Skills</div>
+      <div>{% for skill in skills.technical %}{% if skill.strip() %}<span class="skill-tag">{{ skill }}</span>{% endif %}{% endfor %}</div>
+    </div>
+    {% endif %}
+
+    {% if skills.soft %}
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">Soft Skills</div>
+      <div>{% for skill in skills.soft %}{% if skill.strip() %}<span class="skill-tag">{{ skill }}</span>{% endif %}{% endfor %}</div>
+    </div>
+    {% endif %}
+
+    {% if certifications %}
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">Certifications</div>
+      {% for cert in certifications %}{% if cert.name.strip() %}
+      <div class="cert-entry">
+        <span class="cert-name">{{ cert.name }}</span>
+        {% if cert.issuer or cert.year %}
+        <span class="cert-meta">{{ cert.issuer }}{% if cert.issuer and cert.year %} · {% endif %}{{ cert.year }}</span>
+        {% endif %}
+      </div>
+      {% endif %}{% endfor %}
+    </div>
+    {% endif %}
+  </div>
+
+  <div class="main-content">
+    {% if personal.summary %}
+    <div class="section">
+      <div class="section-title">Profile</div>
+      <p class="summary-text">{{ personal.summary }}</p>
+    </div>
+    {% endif %}
+
+    {% if experience %}
+    <div class="section">
+      <div class="section-title">Experience</div>
+      {% for exp in experience %}
+      <div class="experience-entry">
+        <div class="exp-role">{{ exp.role }}</div>
+        <div class="exp-company">{{ exp.company }}</div>
+        <div class="exp-dates">{{ exp.start_date }}{% if exp.start_date %} – {% endif %}{% if exp.current %}Present{% else %}{{ exp.end_date }}{% endif %}</div>
+        {% if exp.bullets %}
+        <ul class="bullets">
+          {% for bullet in exp.bullets %}{% if bullet.strip() %}<li>{{ bullet }}</li>{% endif %}{% endfor %}
+        </ul>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    {% if education %}
+    <div class="section">
+      <div class="section-title">Education</div>
+      {% for edu in education %}
+      <div class="education-entry">
+        <div class="edu-degree">{{ edu.degree }}{% if edu.field %} in {{ edu.field }}{% endif %}</div>
+        <div class="edu-institution">{{ edu.institution }}</div>
+        <div class="edu-dates">{{ edu.start_date }}{% if edu.start_date and edu.end_date %} – {% endif %}{{ edu.end_date }}</div>
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </div>
+</div>
+</body>
+</html>

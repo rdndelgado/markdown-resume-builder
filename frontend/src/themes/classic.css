@@ -1,0 +1,184 @@
+/* Classic Theme — Traditional serif, ATS-friendly */
+.resume-classic {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  max-width: 100%;
+  padding: 32px;
+  color: #000;
+  background: white;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.resume-classic .resume-header {
+  text-align: center;
+  border-bottom: 2px solid #000;
+  padding-bottom: 14px;
+  margin-bottom: 20px;
+}
+
+.resume-classic .resume-name {
+  font-size: 26px;
+  font-weight: bold;
+  margin: 0 0 4px 0;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.resume-classic .resume-title {
+  font-size: 13px;
+  color: #444;
+  margin: 0 0 10px 0;
+  font-style: italic;
+}
+
+.resume-classic .contact-info {
+  font-size: 12px;
+  color: #333;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px 14px;
+}
+
+.resume-classic .contact-sep {
+  color: #999;
+}
+
+.resume-classic .section {
+  margin-bottom: 18px;
+}
+
+.resume-classic .section-title {
+  font-size: 13px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  border-bottom: 1px solid #000;
+  padding-bottom: 3px;
+  margin-bottom: 10px;
+}
+
+.resume-classic .experience-entry {
+  margin-bottom: 14px;
+}
+
+.resume-classic .exp-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.resume-classic .exp-left {
+  flex: 1;
+}
+
+.resume-classic .exp-role {
+  font-weight: bold;
+  font-size: 13px;
+}
+
+.resume-classic .exp-company {
+  font-size: 12px;
+  color: #333;
+}
+
+.resume-classic .exp-dates {
+  font-size: 12px;
+  color: #555;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.resume-classic .bullets {
+  margin: 5px 0 0 18px;
+  padding: 0;
+}
+
+.resume-classic .bullets li {
+  font-size: 12px;
+  margin-bottom: 3px;
+  line-height: 1.4;
+}
+
+.resume-classic .education-entry {
+  margin-bottom: 10px;
+}
+
+.resume-classic .edu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.resume-classic .edu-left { flex: 1; }
+
+.resume-classic .edu-degree {
+  font-weight: bold;
+  font-size: 13px;
+}
+
+.resume-classic .edu-institution {
+  font-size: 12px;
+  color: #333;
+}
+
+.resume-classic .edu-dates {
+  font-size: 12px;
+  color: #555;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.resume-classic .skills-grid {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.resume-classic .skill-group {
+  flex: 1;
+  min-width: 180px;
+}
+
+.resume-classic .skill-group-label {
+  font-weight: bold;
+  font-size: 12px;
+  margin-bottom: 5px;
+}
+
+.resume-classic .skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.resume-classic .skill-tag {
+  font-size: 11px;
+  background: #f5f5f5;
+  border: 1px solid #ccc;
+  padding: 2px 7px;
+  border-radius: 2px;
+}
+
+.resume-classic .cert-entry {
+  margin-bottom: 6px;
+  font-size: 12px;
+}
+
+.resume-classic .cert-name {
+  font-weight: bold;
+}
+
+.resume-classic .summary-text {
+  font-size: 12px;
+  line-height: 1.6;
+  color: #222;
+}
+
+.resume-classic .empty-state {
+  color: #aaa;
+  font-style: italic;
+  font-size: 12px;
+}
